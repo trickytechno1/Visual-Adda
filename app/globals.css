@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-purple: #6366f1;
+  --color-brand-pink: #a855f7;
+  --color-brand-orange: #f97316;
+  --color-brand-yellow: #f59e0b;
+  --color-dark-bg: #050505;
+  --color-dark-card: #0d0d11;
+  --color-dark-border: rgba(255, 255, 255, 0.08);
+  
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-space), sans-serif;
+  --font-mono: var(--font-mono), monospace;
+  
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 30s linear infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes marquee-reverse {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+  }
+}
+
+/* Custom WebGL-like noise or glow effects */
+.radial-glow {
+  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15) 0%, rgba(249, 115, 22, 0.05) 50%, transparent 100%);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #FFFFFF 20%, #A5A5C7 60%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #f97316 100%);
+}
+
+.brand-gradient-text {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+  background: rgba(13, 13, 17, 0.4);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-card-hover:hover {
+  background: rgba(20, 20, 28, 0.6);
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(99, 102, 241, 0.2);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.electric-glow {
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.15);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Base custom styles */
+html, body {
+  background-color: #050505;
+  color: #ffffff;
+  overflow-x: hidden;
+  font-family: var(--font-inter), sans-serif;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: #6366f1;
+  color: #ffffff;
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1c1c24;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d2d3d;
+}
+
+/* Grain Noise Overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  content: "";
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Light theme overrides */
+html.light, html.light body {
+  background-color: #fcfcfd !important;
+  color: #0c0c0e !important;
+}
+
+html.light header,
+html.light footer,
+html.light section,
+html.light .bg-black,
+html.light .bg-[#050505],
+html.light .bg-[#0d0d11],
+html.light .bg-[#0d0d11]/40,
+html.light .bg-dark-bg {
+  background-color: #fcfcfd !important;
+}
+
+html.light .text-white {
+  color: #0c0c0e !important;
+}
+
+html.light .text-gray-300,
+html.light .text-gray-400 {
+  color: #4b5563 !important;
+}
+
+html.light .text-gray-500 {
+  color: #6b7280 !important;
+}
+
+html.light .text-white/20,
+html.light .text-white/40,
+html.light .text-white/60,
+html.light .text-white/80 {
+  color: rgba(12, 12, 14, 0.6) !important;
+}
+
+html.light .border-white/5,
+html.light .border-white/10,
+html.light .border-white/20,
+html.light .border-white/30,
+html.light .border-dark-border {
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .glass-card {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .glass {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html.light .bg-white/5 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+html.light .bg-white/\[0\.02\] {
+  background-color: rgba(0, 0, 0, 0.02) !important;
+}
+
+html.light .bg-white/\[0\.03\] {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+html.light .bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0.01), transparent) !important;
+}
+
+html.light .text-gradient {
+  background: linear-gradient(135deg, #0c0c0e 20%, #4b5563 60%, #6366f1 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+html.light .brand-gradient-text {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #ea580c 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #fcfcfd !important;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #e2e8f0 !important;
+}
+
+html.light .bg-black/40,
+html.light .bg-black/60 {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+html.light .bg-\[\#0d0d11\]/40 {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  color: #0c0c0e !important;
+  border-color: rgba(0, 0, 0, 0.15) !important;
+}
+
+html.light .loading-screen {
+  background-color: #fcfcfd !important;
+}
+
+html.light .cursor-ring {
+  border-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+html.light .cursor-dot {
+  background-color: #0c0c0e !important;
+}
+
+html.light button.bg-white/5 {
+  color: #0c0c0e !important;
+}
+

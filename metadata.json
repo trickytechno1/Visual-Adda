@@ -1,0 +1,6 @@
+{
+  "name": "Visual Adda",
+  "description": "Visual Adda is a premium creative experience studio that brings ideas to life through visual storytelling, high-end CGI, 3D animation, and motion graphics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
